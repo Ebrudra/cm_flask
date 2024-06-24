@@ -1,5 +1,11 @@
 body {
     background-color: #f8f9fa;
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    background: #f2f2f2;
+    font-family: system-ui, sans-serif;
 }
 
 h1 {
@@ -49,4 +55,60 @@ h1 {
 
 .nowrap {
     white-space: nowrap;
+}
+
+nav {
+    margin-top: 20px;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.2rem;
+    isolation: isolate;
+}
+
+nav ul li a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+nav ul:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: lightblue;
+    height: .2em;
+    inset: auto anchor(right) anchor(bottom) anchor(left);
+    transition: .2s .2s;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 100% -.15em 0;
+    background: lightblue;
+    transition: .2s;
+}
+
+nav ul li:is(:hover,.active):before {
+    anchor-name: --li;
+    top: 0;
+    transition: .2s .4s;
+}
+
+nav ul:has(li:hover) li.active:not(:hover):before {
+    anchor-name: none;
+    inset: 100% -.15em 0;
+    transition: .2s;
 }
