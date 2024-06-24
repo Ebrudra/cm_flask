@@ -14,40 +14,6 @@
 </head>
 <body>
     <div class="container mt-4">
-        <!-- <div class="sticky-top bg-white py-3 px-3 shadow-sm">
-            <div class="container my-4">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-3 text-center text-md-end mb-3 mb-md-0">
-                        <img src="{{ url_for('static', filename='src/logo.png') }}" alt="CrimeMinister Logo" class="img-fluid" style="max-height: 100px;">
-                    </div>
-                    <nav>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Campaign</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Add</a></li>
-                        </ul>
-                    </nav>  
-                    <div class="col-12 col-md-3 text-center text-md-end">
-                        <button class="btn btn-outline-primary btn-lg" type="button" data-toggle="collapse" data-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
-                            <i class="fas fa-filter me-2"></i>Show/Hide Filters
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-            <div class="collapse" id="filterCollapse">
-                <div class="d-flex flex-column flex-md-row align-items-center mb-3">
-                    <div id="filterContainer" class="row flex-grow-1 mb-2 mb-md-0"></div>
-                    <button id="resetFilters" class="btn btn-link ml-md-2 nowrap">Reset Filters</button>
-                </div>
-                <div class="form-group mb-3 d-flex flex-column flex-md-row">
-                    <input type="text" class="form-control mb-2 mb-md-0" id="searchInput" placeholder="Search...">
-                    <button id="resetSearch" class="btn btn-link ml-md-2 nowrap">Reset Search</button>
-                </div>
-            </div>
-        </div> -->
         <div class="sticky-top bg-white py-3 px-3 shadow-sm">
             <div class="container my-4">
                 <div class="row align-items-center">
@@ -56,15 +22,15 @@
                     </div>
                     <nav>
                         <ul class="nav">
-                            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Campaign</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Add</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('campaigns') }}">Campaign</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('blog') }}">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('add') }}">Add</a></li>
                         </ul>
                     </nav>  
                     <div class="col-12 col-md-3 text-center text-md-end">
-                        <button class="btn btn-dark btn-lg" type="button" data-toggle="collapse" data-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
+                        <button class="btn btn-light btn-lg" type="button" data-toggle="collapse" data-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
                             <i class="fas fa-filter me-2"></i>Show/Hide Filters
                         </button>
                     </div>
