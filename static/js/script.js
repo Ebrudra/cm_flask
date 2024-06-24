@@ -1,7 +1,7 @@
 $(document).ready(function() {
     let originalData = [];
     let currentPage = 1;
-    let itemsPerPage = 6;
+    let itemsPerPage = 10;
 
     fetch('/load_csv')
         .then(response => response.json())
@@ -117,19 +117,17 @@ $(document).ready(function() {
             );
         }
 
-        let currentPage = 1;
         updatePagination(filteredData.length);
         createCards(Object.keys(originalData[0]), filteredData);
     }
 
-    
     function updatePagination(totalItems) {
         let paginationContainer = $('#pagination');
         paginationContainer.empty();
         let totalPages = Math.ceil(totalItems / itemsPerPage);
-    
+
         if (totalPages <= 1) return;
-    
+
         let prevPage = `
             <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
                 <a class="page-link" href="#" aria-label="Previous" data-page="${currentPage - 1}">
@@ -158,26 +156,26 @@ $(document).ready(function() {
                 </a>
             </li>
         `;
-    
-        let maxPagesToShow = 5; // Adjust this value to show more or fewer page links
+
+        let maxPagesToShow = 5;
         let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
         let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
         startPage = Math.max(1, endPage - maxPagesToShow + 1);
-    
+
         let pages = Array.from({ length: endPage - startPage + 1 }, (_, i) => `
             <li class="page-item ${currentPage === i + startPage ? 'active' : ''}">
                 <a class="page-link" href="#" data-page="${i + startPage}">${i + startPage}</a>
             </li>
         `).join('');
-    
+
         let pageInput = `
             <li class="page-item">
                 <input type="number" class="form-control" id="pageInput" placeholder="Go to" min="1" max="${totalPages}">
             </li>
         `;
-    
+
         paginationContainer.append(firstPage + prevPage + pages + nextPage + lastPage + pageInput);
-    
+
         paginationContainer.on('click', '.page-link', function(e) {
             e.preventDefault();
             let newPage = parseInt($(this).data('page'));
@@ -187,9 +185,9 @@ $(document).ready(function() {
                 window.history.pushState({ page: currentPage }, '', `?page=${currentPage}`);
             }
         });
-    
+
         $('#pageInput').on('keypress', function(e) {
-            if (e.which === 13) { // Enter key
+            if (e.which === 13) {
                 e.preventDefault();
                 let newPage = parseInt($(this).val());
                 if (!isNaN(newPage) && newPage >= 1 && newPage <= totalPages) {
@@ -200,20 +198,16 @@ $(document).ready(function() {
                 $(this).val('');
             }
         });
-    
+
         $('#totalPages').text(`${totalPages} pages`);
     }
 
-    // Add an event listener for the popstate event to handle browser back/forward navigation
     window.addEventListener('popstate', function(event) {
-    if (event.state && event.state.page) {
-        currentPage = event.state.page;
-        applyFilters();
+        if (event.state && event.state.page) {
+            currentPage = event.state.page;
+            applyFilters();
         }
     });
-
-    // Call applyFilters initially
-    applyFilters();
 
     function showModal(row) {
         let modalBody = $('#modalBody');

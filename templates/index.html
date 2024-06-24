@@ -9,50 +9,42 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </head>
 <body>
     <div class="container mt-4">
         <div class="sticky-top bg-white py-3 px-3 shadow-sm">
-            
             <div class="container my-4">
                 <div class="row align-items-center">
+                    <div class="col-12 col-md-3 text-center text-md-end mb-3 mb-md-0">
+                        <img src="{{ url_for('static', filename='src/logo.png') }}" alt="CrimeMinister Logo" class="img-fluid" style="max-height: 100px;">
+                    </div>
                     <div class="col-12 col-md-6 text-center text-md-start mb-3 mb-md-0">
                         <div class="border border-secondary rounded p-3 d-inline-block bg-light shadow-sm">
                             <h2 class="m-0 font-weight-bold">CrimeMinistry</h2>
                             <h5 class="m-0 text-secondary">Business Directory</h5>
                         </div>
                     </div>
-                    <div class="col-12 col-md-3 text-center text-md-end mb-3 mb-md-0">
-                        <img src="{{ url_for('static', filename='src/logo.png') }}" alt="CrimeMinister Logo" class="img-fluid" style="max-height: 100px;">
-                    </div>
                     <div class="col-12 col-md-3 text-center text-md-end">
-                        <button class="btn btn-outline-primary btn-lg" type="button" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
+                        <button class="btn btn-outline-primary btn-lg" type="button" data-toggle="collapse" data-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
                             <i class="fas fa-filter me-2"></i>Show/Hide Filters
                         </button>
                     </div>
                 </div>
             </div>
-            
-             
-            
             <div class="collapse" id="filterCollapse">
                 <div class="d-flex flex-column flex-md-row align-items-center mb-3">
                     <div id="filterContainer" class="row flex-grow-1 mb-2 mb-md-0"></div>
                     <button id="resetFilters" class="btn btn-link ml-md-2 nowrap">Reset Filters</button>
                 </div>
-
                 <div class="form-group mb-3 d-flex flex-column flex-md-row">
                     <input type="text" class="form-control mb-2 mb-md-0" id="searchInput" placeholder="Search...">
                     <button id="resetSearch" class="btn btn-link ml-md-2 nowrap">Reset Search</button>
                 </div>
-
             </div>
         </div>
-    
         <div id="cardsContainer" class="row mb-4 mt-4"></div>
-        
         <div class="form-group col-md-4 mb-4 mt-4">
             <label for="itemsPerPage">Business per page:</label>
             <select class="form-control" id="itemsPerPage">
@@ -61,15 +53,12 @@
                 <option value="30">30</option>
                 <option value="40">40</option>
             </select>
-        </div>        
-        
+        </div>
         <nav aria-label="Page navigation example">
             <ul class="pagination" id="pagination"></ul>
         </nav>
         <p id="totalPages"></p>
     </div>
-
-    <!-- Modal -->
     <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -80,7 +69,6 @@
                     </button>
                 </div>
                 <div class="modal-body" id="modalBody">
-                    <!-- Detailed information will be injected here by JavaScript -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
