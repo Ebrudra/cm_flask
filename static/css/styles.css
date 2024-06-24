@@ -115,3 +115,48 @@ nav ul:has(li:hover) li.active:not(:hover):before {
     inset: 100% -.15em 0;
     transition: .2s;
 }
+
+#filterContainer {
+    max-width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+#filterContainer::-webkit-scrollbar {
+    height: 6px;
+}
+
+#filterContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#filterContainer::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+#filterContainer::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+#filterContainer button {
+    flex: 0 0 auto;
+    margin: 0.25rem;
+    white-space: nowrap;
+}
+
+#cardsContainer .card {
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .sticky-top {
+        position: static;
+    }
+}
+
+.container-fluid {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
